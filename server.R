@@ -7,6 +7,21 @@ library(ggplot2)
 library(rpart)
 library(randomForest)
 
+cgpatogpa <- function(cgpa) {
+  if (cgpa<4) {
+    gpa=2
+  }
+  if (cgpa>=4 & cgpa<5) {
+    gpa=3
+  }
+  if (cgpa>=5 & cgpa<6) {
+    gpa=3.5
+  } 
+  if(cgpa>=6 & cgpa<=10) {
+    gpa=4
+  }
+  return(gpa)
+}
 
 dataready <- function(x){
   df<-x
@@ -28,13 +43,14 @@ shinyServer(function(input,output,session){
   
   data <- googlesheets::gs_key(sheet_key) %>%
     gs_read(ws = "Admission Predict", range = cell_rows(1:501))
-  
-  
+ 
+  for (row in 1:nrow(data['CGPA'])) { 
+    data$CGPA[row] <- cgpatogpa(data$CGPA[row]) 
+  }
   observeEvent(input$refresh,{
     session$reload()
     
   })
-  
   
   
   ###Algorithm Discussed
@@ -68,7 +84,7 @@ shinyServer(function(input,output,session){
       pred1 <- predict(model2, newdata =test)
       value1 <- data.frame(select(test,-c("Chance.of.Admit")),pred1)
       colnames(value1) <- c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Prediction")
-      value1$Prediction
+      value1$Prediction*100
     
       
   })
@@ -93,7 +109,7 @@ shinyServer(function(input,output,session){
     pred2 <- predict(df.rf, newdata = test)
     value2 <- data.frame(select(test,-c("Chance.of.Admit")),pred2)
     colnames(value2) <- c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Prediction")
-    value2$Prediction
+    value2$Prediction*100
     
   })
   
@@ -117,7 +133,7 @@ shinyServer(function(input,output,session){
     pred3 <- predict(df.dt, newdata = test)
     value3 <- data.frame(select(test,-c("Chance.of.Admit")),pred3)
     colnames(value3) <- c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Prediction")
-    value3$Prediction
+    value3$Prediction*100
     
   })
   
@@ -142,7 +158,7 @@ shinyServer(function(input,output,session){
     pred1 <- predict(model2, newdata =test)
     value1 <- data.frame(select(test,-c("Chance.of.Admit")),pred1)
     colnames(value1) <- c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Prediction")
-    value1$Prediction
+    value1$Prediction*100
     
     require(randomForest)
     df.rf=randomForest(Chance.of.Admit ~ . , data =train)
@@ -179,7 +195,7 @@ shinyServer(function(input,output,session){
   ###Final Dashboard (Data)
   output$mytable =DT::renderDataTable({
     mytable <-data.frame(data)
-    colnames(mytable) <-c("Serial No.","GRE Score","TOEFL Score","University Rating","SOP","LOR","CGPA","Research","Chance of Admit")
+    colnames(mytable) <-c("Serial No.","GRE Score","TOEFL Score","University Rating","SOP","LOR","GPA","Research","Chance of Admit")
     mytable <- datatable(data=mytable)
   })                                                
   

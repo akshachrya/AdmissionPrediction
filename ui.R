@@ -51,8 +51,8 @@ shinyUI(
                                 h6("SOP should be range from 1 to 5"),br(),
                                 textInput("lor","Letter of Recommendation Strength",placeholder = "Input your Letter of Recommendation Strength",value = 0),
                                 h6("LOR should be range from 1 to 5"),br(),
-                                textInput("cgpa","Undergraduate CGPA",placeholder = "Input your CGPA",value=0),
-                                h6("CGPA should be range from 6.8 to 9.92"),br(),
+                                textInput("cgpa","Undergraduate GPA",placeholder = "Input your GPA",value=0),
+                                h6("GPA should be range from 0 to 4"),br(),
                                 sliderInput("research", "Research Experience",min = 0, max =1,value = 0,step=1)
                                 
                               ),
