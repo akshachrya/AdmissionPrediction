@@ -158,23 +158,23 @@ shinyServer(function(input,output,session){
     pred1 <- predict(model2, newdata =test)
     value1 <- data.frame(select(test,-c("Chance.of.Admit")),pred1)
     colnames(value1) <- c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Prediction")
-    value1$Prediction*100
+    value1$Prediction
     
     require(randomForest)
     df.rf=randomForest(Chance.of.Admit ~ . , data =train)
     pred2 <- predict(df.rf, newdata = test)
     value2 <- data.frame(select(test,-c("Chance.of.Admit")),pred2)
     colnames(value2) <- c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Prediction")
-    value2$Prediction*100
+    value2$Prediction
     
     require(rpart)
     df.dt=rpart(Chance.of.Admit ~GRE.Scores+TOEFL.Scores+University.Ranking+SOP+LOR+CGPA+Research, method="anova",data =train)
     pred3 <- predict(df.dt, newdata = test)
     value3 <- data.frame(select(test,-c("Chance.of.Admit")),pred3)
     colnames(value3) <- c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Prediction")
-    value3$Prediction*100
+    value3$Prediction
     
-    mean(value1$Prediction,value2$Prediction,value3$Prediction)
+    mean(value1$Prediction,value2$Prediction,value3$Prediction)*100
     
   })
   
