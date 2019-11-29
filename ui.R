@@ -46,7 +46,7 @@ shinyUI(
                                 h6("GRE Score should be range from 260 to 340"),br(),
                                 textInput("toeflscore","TOEFL Score",placeholder = "Input your TOEFL Score",value=0),
                                 h6("TOEFL Score should be range from 92 to 120"),br(),
-                                sliderInput("unversityranking", "Unversity Ranking",min = 1, max =5,value = 3,step=1),
+                                sliderInput("unversityranking", "Unversity Rating",min = 1, max =5,value = 3,step=1),
                                 textInput("sop","Statement of Purpose",placeholder = "Input your SOP",value=0),
                                 h6("SOP should be range from 1 to 5"),br(),
                                 textInput("lor","Letter of Recommendation Strength",placeholder = "Input your Letter of Recommendation Strength",value = 0),
