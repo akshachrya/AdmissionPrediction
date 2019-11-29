@@ -1,0 +1,399 @@
+shiny::runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+shiny::runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+googlesheets::gs_auth(token = "ttt.rds")
+sheet_key <- "1U96KL565SE1ALz1pKRzmMgyrTBmKb99MpfBSzSO60KE"
+data <- googlesheets::gs_key(sheet_key) %>%
+gs_read(ws = "Admission Predict", range = cell_rows(1:100))
+runApp()
+dataready <- function(x){
+df<-x
+colnames(df) <- c("Serial Number","GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Chance of Admit")
+df <- select(df,-c("Serial Number"))
+}
+dataready(data)
+x <- dataready(data)
+x
+rm(x)
+rn(dataready)
+rm(dataready)
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+install.packages("FLR")
+knitr::opts_chunk$set(echo = TRUE)
+dfNorm <- normData(df)
+#Using Library
+library(FLR)
+dfNorm <- normData(df)
+df<-read.csv("Admission Predict.csv")
+colnames(df) <- c("Serial Number","GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Chance of Admit")
+df <- select(df,-c("Serial Number"))
+dfNorm
+#Using Library
+library(FLR)
+dfNorm <- normData(df)
+#80% of the sample size
+smp_size <- floor(0.8 * nrow(dfNorm))
+#Set the seed to make your partition reproducible
+set.seed(123)
+train_ind <- sample(seq_len(nrow(dfNorm)), size = smp_size)
+train <- dfNorm[train_ind, ]
+test <- dfNorm[-train_ind, ]
+train
+?denormData
+runApp()
+runApp()
+model1 = lm(Chance.of.Admit~., data=train)
+model2 = update(model1,~.-University.Ranking-SOP)
+# Results <-isolate(c(input$grescore,input$toeflscore,input$unversityranking,input$sop,input$lor,input$cgpa,input$research))
+df <- dataready(data)
+dataready <- function(x){
+df<-x
+colnames(df) <- c("Serial Number","GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Chance of Admit")
+df <- select(df,-c("Serial Number"))
+}
+normalize <- function(x) {
+return ((x - min(x)) / (max(x) - min(x)))
+}
+# Results <-isolate(c(input$grescore,input$toeflscore,input$unversityranking,input$sop,input$lor,input$cgpa,input$research))
+df <- dataready(data)
+dfNorm <- as.data.frame(lapply(df, normalize))
+#80% of the sample size
+smp_size <- floor(0.8 * nrow(dfNorm))
+#Set the seed to make your partition reproducible
+set.seed(123)
+train_ind <- sample(seq_len(nrow(dfNorm)), size = smp_size)
+train <- dfNorm[train_ind, ]
+colnames(train) <- c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Chance of Admit")
+train
+model1 = lm(Chance.of.Admit~., data=train)
+rm(test)
+runApp()
+model1 = lm(Chance.of.Admit~., data=train)
+train <- dfNorm[train_ind, ]
+model1 = lm(Chance.of.Admit~., data=train)
+model2 = update(model1,~.-University.Ranking-SOP)
+atest <- c(input$grescore,input$toeflscore,input$unversityranking,input$sop,input$lor,input$cgpa,input$research,0)
+runApp()
+atest <- c(302,102,1,2,1.5,8,0)
+atest
+test <- as.data.frame(lapply(atest,normalize))
+test
+atest <- data.frame(c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Actual Value"),c(302,102,1,2,1.5,8,0))
+atest <- data.frame(c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research"),c(302,102,1,2,1.5,8,0))
+atest
+atest <- (c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research"),c(302,102,1,2,1.5,8,0))
+atest <- c(c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research"),c(302,102,1,2,1.5,8,0))
+atest
+atest1 <- table(input$grescore,input$toeflscore,input$unversityranking,input$sop,input$lor,input$cgpa,input$research,0)
+atest <- table(c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research"),c(302,102,1,2,1.5,8,0))
+atest
+atest <- as.data.frame(c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research"),c(302,102,1,2,1.5,8,0))
+atest <- data.frame(c("GRE Scores"=302,"TOEFL Scores"=102,"University Ranking"=1,"SOP"=2,"LOR"=1.5,"CGPA"=8,"Research"=0))
+atest4
+atest
+atest <- c(302,102,1,2,1.5,8)
+test <- (lapply(atest,normalize))
+test
+atest
+test <- lapply(atest,normalize)
+test
+test <- sapply(atest,normalize)
+test
+atest <- c(302,102,1,2,1.5,8)
+atest <-rbind(train,atest)
+test <- sapply(atest,normalize)
+test
+train
+atest <-rbind(train_ind,atest)
+test <- sapply(atest,normalize)
+test
+rm(test)
+rm(atest)
+# Results <-isolate(c(input$grescore,input$toeflscore,input$unversityranking,input$sop,input$lor,input$cgpa,input$research))
+df <- dataready(data)
+atest <- c(302,102,1,2,1.5,8)
+df<- cbind(df,atest)
+df<- rbind(df,atest)
+df
+tail()
+tail(df)
+# Results <-isolate(c(input$grescore,input$toeflscore,input$unversityranking,input$sop,input$lor,input$cgpa,input$research))
+df <- dataready(data)
+atest <- c(302,102,1,2,1.5,8,0,NA)
+df<- rbind(df,atest)
+df
+tail(df)
+dfNorm <- as.data.frame(lapply(df, normalize))
+dfNorm
+# Results <-isolate(c(input$grescore,input$toeflscore,input$unversityranking,input$sop,input$lor,input$cgpa,input$research))
+df <- dataready(data)
+atest <- c(302,102,1,2,1.5,8,0,0)
+df<- rbind(df,atest)
+dfNorm <- as.data.frame(lapply(df, normalize))
+tail(dfNorm)
+dfNorm[1:tail(dfNorm)]
+dfNorm[1:99]
+dfNorm[1:99,]
+dfNorm1 <- dfdfNorm[100,]
+dfNorm1 <- dfNorm[100,]
+dfNorm <- dfNorm[1:99,]
+dfNorm1
+#80% of the sample size
+smp_size <- floor(0.8 * nrow(dfNorm))
+#Set the seed to make your partition reproducible
+set.seed(123)
+train_ind <- sample(seq_len(nrow(dfNorm)), size = smp_size)
+train <- dfNorm[train_ind, ]
+model1 = lm(Chance.of.Admit~., data=train)
+model2 = update(model1,~.-University.Ranking-SOP)
+pred1 <- predict(model2, newdata = test)
+test <- dfNorm[100,]
+pred1 <- predict(model2, newdata = test)
+value1 <- data.frame(select(test,-c("Actual Value")),pred1)
+test
+value1 <- data.frame(select(test,-c("Chance.of.Admit")),pred1)
+value1
+value1 <- data.frame(test,pred1)
+value1
+pred1
+train
+pred1 <- predict(model2, newdata =select(test,-c("Chance.of.Admit")))
+value1 <- data.frame(select(test,-c("Chance.of.Admit")),pred1)
+value1
+model2
+pred1 <- predict(model2, newdata =test)
+pred1
+# Results <-isolate(c(input$grescore,input$toeflscore,input$unversityranking,input$sop,input$lor,input$cgpa,input$research))
+df <- dataready(data)
+atest <- c(302,102,1,2,1.5,8,0,0)
+df<- rbind(df,atest)
+dfNorm <- as.data.frame(lapply(df, normalize))
+test <- dfNorm[100,]
+dfNorm <- dfNorm[1:99,]
+#80% of the sample size
+smp_size <- floor(0.8 * nrow(dfNorm))
+#Set the seed to make your partition reproducible
+set.seed(123)
+train_ind <- sample(seq_len(nrow(dfNorm)), size = smp_size)
+train <- dfNorm[train_ind, ]
+model1 = lm(Chance.of.Admit~., data=train)
+model2 = update(model1,~.-University.Ranking-SOP)
+pred1 <- predict(model2, newdata =test)
+value1 <- data.frame(select(test,-c("Chance.of.Admit")),pred1)
+value1
+test
+train
+runApp()
+runApp()
+runApp()
+output$t1 <- renderTable({
+# Results <-isolate(c(input$grescore,input$toeflscore,input$unversityranking,input$sop,input$lor,input$cgpa,input$research))
+df <- dataready(data)
+atest <- c(input$grescore,input$toeflscore,input$unversityranking,input$sop,input$lor,input$cgpa,input$research,0)
+df<- rbind(df,atest)
+dfNorm <- as.data.frame(lapply(df, normalize))
+test <- dfNorm[100,]
+dfNorm <- dfNorm[1:99,]
+#80% of the sample size
+smp_size <- floor(0.8 * nrow(dfNorm))
+#Set the seed to make your partition reproducible
+set.seed(123)
+train_ind <- sample(seq_len(nrow(dfNorm)), size = smp_size)
+train <- dfNorm[train_ind, ]
+model1 = lm(Chance.of.Admit~., data=train)
+model2 = update(model1,~.-University.Ranking-SOP)
+pred1 <- predict(model2, newdata =test)
+value1 <- data.frame(select(test,-c("Chance.of.Admit")),pred1)
+value1
+# Results <-isolate(c(input$grescore,input$toeflscore,input$unversityranking,input$sop,input$lor,input$cgpa,input$research))
+df <- dataready(data)
+)
+# Results <-isolate(c(input$grescore,input$toeflscore,input$unversityranking,input$sop,input$lor,input$cgpa,input$research))
+df <- dataready(data)
+df <- dataready(data)
+df
+nrow(df)
+rm(df)
+rm(dfNorm)
+rm(dfNorm1)
+rm(model1)
+rm(model2)
+rm(train)
+rm(value1)
+rm(atest)
+rm(pred1)
+rm(smp_size)
+rm(train_ind)
+# Results <-isolate(c(input$grescore,input$toeflscore,input$unversityranking,input$sop,input$lor,input$cgpa,input$research))
+df <- dataready(data)
+rm(df)
+df <- dataready(data)
+data
+googlesheets::gs_auth(token = "ttt.rds")
+sheet_key <- "1U96KL565SE1ALz1pKRzmMgyrTBmKb99MpfBSzSO60KE"
+data <- googlesheets::gs_key(sheet_key) %>%
+gs_read(ws = "Admission Predict", range = cell_rows(1:500))
+df <- dataready(data)
+nrow(data)
+data <- googlesheets::gs_key(sheet_key) %>%
+gs_read(ws = "Admission Predict", range = cell_rows(1:501))
+df <- dataready(data)
+nrow(df)
+rm(test)
+atest <- c(337,118,4,4.5,4.5,9.65,1,0)
+df<- rbind(df,atest)
+df
+dfNorm <- as.data.frame(lapply(df, normalize))
+test <- dfNorm[501,]
+dfNorm <- dfNorm[1:500,]
+test
+dfNorm
+#10% of the sample size
+smp_size <- floor(1 * nrow(dfNorm))
+#Set the seed to make your partition reproducible
+set.seed(123)
+train_ind <- sample(seq_len(nrow(dfNorm)), size = smp_size)
+train <- dfNorm[train_ind, ]
+model1 = lm(Chance.of.Admit~., data=train)
+model2 = update(model1,~.-University.Ranking-SOP)
+pred1 <- predict(model2, newdata =test)
+pred1
+value1 <- data.frame(select(test,-c("Chance.of.Admit")),pred1)
+value1
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+value1$Prediction
+value1 <- data.frame(select(test,-c("Chance.of.Admit")),pred1)
+value1$Prediction
+df <- dataready(data)
+atest <- c(337,118,4,4.5,4.5,9.65,1,0)
+df<- rbind(df,atest)
+dfNorm <- as.data.frame(lapply(df, normalize))
+test <- dfNorm[501,]
+#100% of the sample size
+smp_size <- floor(1 * nrow(dfNorm))
+#Set the seed to make your partition reproducible
+set.seed(123)
+train_ind <- sample(seq_len(nrow(dfNorm)), size = smp_size)
+train <- dfNorm[train_ind, ]
+model1 = lm(Chance.of.Admit~., data=train)
+model2 = update(model1,~.-University.Ranking-SOP)
+pred1 <- predict(model2, newdata =test)
+value1 <- data.frame(select(test,-c("Chance.of.Admit")),pred1)
+colnames(value1) <- c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Prediction")
+value1$Prediction
+runApp()
+runApp()
+shiny::runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+runApp()
+df <- dataready(data)
+atest <- c(337,118,4,4.5,4.5,9.65,1,0)
+df<- rbind(df,atest)
+dfNorm <- df
+dfNorm
+runApp()
+colnames(dfNorm) <- c("GRE.Scores","TOEFL.Scores","University.Ranking","SOP","LOR","CGPA","Research","Chance.of.Admit")
+# dfNorm <- as.data.frame(lapply(df, normalize))
+test <- dfNorm[501,]
+dfNorm <- dfNorm[1:500,]
+#80% of the sample size
+smp_size <- floor(0.8 * nrow(dfNorm))
+#Set the seed to make your partition reproducible
+set.seed(123)
+train_ind <- sample(seq_len(nrow(dfNorm)), size = smp_size)
+train <- dfNorm[train_ind, ]
+model1 = lm(Chance.of.Admit~., data=train)
+model2 = update(model1,~.-University.Ranking-SOP)
+pred1 <- predict(model2, newdata =test)
+pred1
+value1 <- data.frame(select(test,-c("Chance.of.Admit")),pred1)
+colnames(value1) <- c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Prediction")
+value1$Prediction
+test
+rm(sdNorm)
+rm(dfNorm)
+runApp()
+atest <- c(337,118,4,4.5,4.5,9.65,1,0)
+df<- rbind(df,atest)
+dfNorm <- df
+colnames(dfNorm) <- c("GRE.Scores","TOEFL.Scores","University.Ranking","SOP","LOR","CGPA","Research","Chance.of.Admit")
+# dfNorm <- as.data.frame(lapply(df, normalize))
+test <- dfNorm[501,]
+dfNorm <- dfNorm[1:500,]
+#80% of the sample size
+smp_size <- floor(0.8 * nrow(dfNorm))
+#Set the seed to make your partition reproducible
+set.seed(123)
+train_ind <- sample(seq_len(nrow(dfNorm)), size = smp_size)
+train <- dfNorm[train_ind, ]
+model1 = lm(Chance.of.Admit~., data=train)
+model2 = update(model1,~.-University.Ranking-SOP)
+pred1 <- predict(model2, newdata =test)
+value1 <- data.frame(select(test,-c("Chance.of.Admit")),pred1)
+colnames(value1) <- c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Prediction")
+value1$Prediction
+dfNorm
+dfNorm
+dfNorm <- as.data.frame(lapply(df, normalize))
+test <- dfNorm[501,]
+dfNorm <- dfNorm[1:500,]
+#80% of the sample size
+smp_size <- floor(0.8 * nrow(dfNorm))
+#Set the seed to make your partition reproducible
+set.seed(123)
+train_ind <- sample(seq_len(nrow(dfNorm)), size = smp_size)
+train <- dfNorm[train_ind, ]
+model1 = lm(Chance.of.Admit~., data=train)
+model2 = update(model1,~.-University.Ranking-SOP)
+pred1 <- predict(model2, newdata =test)
+value1 <- data.frame(select(test,-c("Chance.of.Admit")),pred1)
+colnames(value1) <- c("GRE Scores","TOEFL Scores","University Ranking","SOP","LOR","CGPA","Research","Prediction")
+value1$Prediction
+runApp()
+runApp()
+runApp()
+runApp()
